@@ -6,7 +6,7 @@ const User = require('./src/models/User');
 const zxcvbn = require('zxcvbn');
 const cors = require('cors');
 const sequelize = require('./src/config/db');
-const postController = require('./src/models/Post')
+
 
 
 const app = express();
@@ -66,19 +66,6 @@ app.post('/login', async (req, res) => {
     return res.status(500).json({ error: "Erro no login" });
   }
 });
-
-// =================CRUD =======================================
-//rota para obter os posts
-app.get('/posts', postController.getPosts);
-
-//rota para criar
-app.post('/posts', postController.createPost);
-
-//rota para atualizar
-app.put('/posts/:id', postController.updatePost);
-
-//rota para deletar
-app.delete('/posts/:id', postController.deletePost);
 
 
   app.listen(port, async () => {
